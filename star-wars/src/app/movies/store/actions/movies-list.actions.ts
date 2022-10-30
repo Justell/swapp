@@ -4,10 +4,11 @@ import { ResponseList } from '../../../shared/models';
 import { Movie } from '../../models';
 
 export const MoviesActions = createActionGroup({
-  source: 'Movies',
+  source: 'Movies/List',
   events: {
     'Load Movies': emptyProps(),
     'Load Movies Success': props<{ response: ResponseList<Movie> }>(),
     'Load Movies Failure': props<{ error: string }>(),
+    'Navigate To Movie Details': props<{ id: string }>(),
   },
 });

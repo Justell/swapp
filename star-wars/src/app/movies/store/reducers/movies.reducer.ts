@@ -1,25 +1,33 @@
 import { createReducer, on } from '@ngrx/store';
+import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 
-import { MoviesActions } from '../actions';
+import { getIdFromUrl } from '../../../shared/utils';
+
+import { MovieDetailActions, MoviesActions } from '../actions';
 import { Movie } from '../../models';
 
-export const moviesFeatureKey = 'movies-list';
+export const movieListKey = 'movies-list';
 
-export interface State {
-  movies: Movie[] | null;
-  count: number | null;
+export const adapter: EntityAdapter<Movie> = createEntityAdapter<Movie>({
+  selectId: selectMovieId,
+});
+
+export function selectMovieId(movie: Movie): string {
+  return getIdFromUrl(movie.url);
+}
+
+export interface State extends EntityState<Movie> {
   loading: boolean;
   loaded: boolean;
   error: string | null;
 }
 
-export const initialState: State = {
-  movies: null,
-  count: null,
+export const initialState: State = adapter.getInitialState({
+  count: 0,
   loading: false,
   loaded: false,
   error: null,
-};
+});
 
 export const reducer = createReducer(
   initialState,
@@ -28,17 +36,12 @@ export const reducer = createReducer(
     loading: true,
     loaded: false,
     error: null,
-    movies: null,
-    count: null,
   })),
-  on(
-    MoviesActions.loadMoviesSuccess,
-    (state, { response: { results, count } }) => ({
+  on(MoviesActions.loadMoviesSuccess, (state, { response: { results } }) =>
+    adapter.setAll(results, {
       ...state,
       loading: false,
       loaded: true,
-      movies: results,
-      count,
     })
   ),
   on(MoviesActions.loadMoviesFailure, (state, { error }) => ({
@@ -46,5 +49,12 @@ export const reducer = createReducer(
     loading: false,
     loaded: false,
     error,
-  }))
+  })),
+  on(MovieDetailActions.loadMovieSuccess, (state, { response: movie }) =>
+    adapter.setAll([movie], {
+      ...state,
+      loading: false,
+      loaded: true,
+    })
+  )
 );
