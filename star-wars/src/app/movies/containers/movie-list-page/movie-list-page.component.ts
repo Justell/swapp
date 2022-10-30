@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { getIdFromUrl } from 'src/app/shared/utils';
 
 import { MoviesActions, MoviesSelectors } from '../../store';
 
@@ -13,7 +14,10 @@ export class MovieListPageComponent {
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {
-    this.store.dispatch(MoviesActions.loadMovies());
+  onMovieSelected(url: string) {
+    const resourceID = getIdFromUrl(url);
+    this.store.dispatch(
+      MoviesActions.navigateToMovieDetails({ id: resourceID })
+    );
   }
 }

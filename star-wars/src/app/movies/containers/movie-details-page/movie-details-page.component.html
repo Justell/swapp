@@ -1,0 +1,7 @@
+<div class="card-container">
+  <h1>Movie Details</h1>
+  <app-movie-detail [movieDetails]="movieDetails$ | async"> </app-movie-detail>
+  <button mat-flat-button color="primary" (click)="backToMovies()">
+    Back To List
+  </button>
+</div>
