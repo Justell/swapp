@@ -1,0 +1,13 @@
+<mat-toolbar class="toolbar">
+  <img
+    src="../../../assets/images/yoda.png"
+    width="30px"
+    [routerLink]="['/home']"
+    routerLinkActive
+    #home="routerLinkActive"
+  />
+  <span>Swapp</span>
+</mat-toolbar>
+<div class="background">
+  <ng-content></ng-content>
+</div>

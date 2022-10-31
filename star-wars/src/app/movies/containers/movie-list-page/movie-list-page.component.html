@@ -1,0 +1,11 @@
+<h1>Star Wars Movies List</h1>
+<ng-container *ngIf="moviesList$ | async as moviesList">
+  <div class="parent">
+    <app-movie-list-item
+      *ngFor="let movie of moviesList"
+      [movie]="movie"
+      (click)="onMovieSelected(movie.url)"
+    >
+    </app-movie-list-item>
+  </div>
+</ng-container>

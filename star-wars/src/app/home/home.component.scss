@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  .container__title {
+    padding-top: 70px;
+    font-size: 60px;
+  }
+
+  .container__subtitle {
+    padding-top: 60px;
+    font-size: 40px;
+  }
+
+  .container__content {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.card {
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  height: 40px;
+  width: 200px;
+  margin: 0 16px 8px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #87a96b;
+  font-size: 24px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
