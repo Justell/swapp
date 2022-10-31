@@ -5,13 +5,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomSerializer, routerReducer } from './shared/router-store';
+import { LayoutComponent } from './layout/layout.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,7 +22,9 @@ import { CustomSerializer, routerReducer } from './shared/router-store';
     StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
+    MatToolbarModule,
   ],
+  declarations: [AppComponent, LayoutComponent, HomeComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
