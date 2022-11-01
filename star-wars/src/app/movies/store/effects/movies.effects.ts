@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { MoviesService } from '../../services/movies.service';
 import { MovieDetailActions, MoviesActions } from '../actions';
 import { Router } from '@angular/router';
-import { getIdFromUrl } from 'src/app/shared/utils';
 
 @Injectable()
 export class MoviesEffects {
@@ -22,6 +21,7 @@ export class MoviesEffects {
       ofType(MoviesActions.loadMovies),
       switchMap(() => {
         return this.moviesService.getMovies().pipe(
+          tap((res) => console.log('res', res)),
           map((response) => MoviesActions.loadMoviesSuccess({ response })),
           catchError((error) => of(MoviesActions.loadMoviesFailure(error)))
         );
