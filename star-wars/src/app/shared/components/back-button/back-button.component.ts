@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  OnInit,
   Output,
 } from '@angular/core';
 
@@ -14,6 +13,8 @@ import {
 })
 export class BackButtonComponent {
   @Output() clicked = new EventEmitter<void>();
+
+  constructor() {}
 
   onClicked(): void {
     this.clicked.emit();
