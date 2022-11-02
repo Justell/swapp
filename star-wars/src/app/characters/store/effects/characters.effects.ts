@@ -23,7 +23,7 @@ export class CharactersEffects {
             CharacterListActions.loadCharactersSuccess({ results })
           ),
           catchError((error) =>
-            of(CharacterListActions.loadCharactersFailure(error))
+            of(CharacterListActions.loadCharactersFailure({ error }))
           )
         );
       })
