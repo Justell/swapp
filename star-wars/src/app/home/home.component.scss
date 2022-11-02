@@ -1,26 +1,7 @@
-.container {
+.container-content {
+  padding-top: 40px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-
-  .container__title {
-    padding-top: 60px;
-    padding-bottom: 30px;
-    font-size: 80px;
-  }
-
-  .container__subtitle {
-    padding-top: 30px;
-    font-size: 40px;
-  }
-
-  .container__content {
-    padding-top: 40px;
-    display: flex;
-    flex-direction: row;
-  }
+  flex-direction: row;
 }
 
 .card {

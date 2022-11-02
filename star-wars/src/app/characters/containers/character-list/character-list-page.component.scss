@@ -1,14 +1,6 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-
-  .container__title {
-    padding-top: 60px;
-    font-size: 40px;
-  }
+.container-title {
+  padding-top: 60px;
+  font-size: 40px;
 }
 
 input {

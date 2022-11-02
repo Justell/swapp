@@ -1,10 +1,10 @@
 <ng-container *ngIf="moviesList$ | async as moviesList">
-  <div class="container">
-    <div class="title">Star Wars Movies</div>
+  <div class="feat-container">
+    <div class="feat-title">Star Wars Movies</div>
     <cdk-virtual-scroll-viewport
       appendOnly
       itemSize="30"
-      class="container-viewport"
+      class="feat-viewport viewport-size"
     >
       <app-movie-list-item
         *ngFor="let movie of moviesList"

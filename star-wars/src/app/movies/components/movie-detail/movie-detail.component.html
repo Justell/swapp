@@ -1,12 +1,12 @@
 <ng-container *ngIf="movieDetails">
-  <div class="container">
-    <div class="title">
+  <div class="feat-container">
+    <div class="feat-title">
       Episode {{ movieDetails.episode_id }}: {{ movieDetails.title }}
     </div>
     <cdk-virtual-scroll-viewport
       appendOnly
       itemSize="30"
-      class="container-viewport"
+      class="feat-viewport viewport-size"
     >
       <div class="content">
         <div class="crawl">{{ movieDetails.opening_crawl }}</div>
