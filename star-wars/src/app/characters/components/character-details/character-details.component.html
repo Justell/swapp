@@ -1,0 +1,36 @@
+<ng-container *ngIf="char">
+  <div class="container">
+    <div class="container__title">{{ char.name }}</div>
+    <cdk-virtual-scroll-viewport
+      appendOnly
+      itemSize="30"
+      class="container-viewport"
+    >
+      <div class="content">
+        <div class="title">Characteristics</div>
+        <br />
+        <div class="about">
+          <div>
+            <div>Height: {{ char.height }}</div>
+            <div>Weight: {{ char.mass }}</div>
+            <div>Birth Year: {{ char.birth_year }}</div>
+            <div>Gender: {{ char.gender }}</div>
+          </div>
+          <div>
+            <div>Hair Color: {{ char.hair_color }}</div>
+            <div>Skin Color: {{ char.skin_color }}</div>
+            <div>Eye Color: {{ char.eye_color }}</div>
+          </div>
+        </div>
+        <br />
+        <div class="title">Movies</div>
+        <br />
+        <ng-container *ngFor="let movie of movies">
+          <a [routerLink]="['/movies', movie.id]">
+            <div class="link">{{ movie.name }}</div>
+          </a>
+        </ng-container>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</ng-container>

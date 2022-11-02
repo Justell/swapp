@@ -1,0 +1,19 @@
+.container-viewport {
+  height: 300px;
+  width: 400px;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: black;
+  background-color: #eeeeee;
+  opacity: 0.9;
+}
+
+.list-item {
+  font-size: 24px;
+  opacity: 1;
+
+  &:hover {
+    background-color: #cccccc;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,25 @@
+.back-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-weight: 300;
+  padding: 8px;
+  width: 200px;
+  margin-top: 16px;
+
+  &:hover {
+    background-color: #87a96b;
+  }
+
+  &:active {
+    background-color: #6e8e53;
+  }
+}
