@@ -4,7 +4,7 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { CharactersService } from '../../services/characters.service';
-import { CharacterListActions } from '../actions';
+import { CharacterDetailActions, CharacterListActions } from '../actions';
 
 @Injectable()
 export class CharactersEffects {
@@ -37,5 +37,20 @@ export class CharactersEffects {
         tap(({ id }) => this.router.navigate(['/characters', id]))
       ),
     { dispatch: false }
+  );
+
+  loadCharacterDetails$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CharacterDetailActions.loadCharacter),
+      switchMap(({ id }) => {
+        return this.charactersService
+          .getCharacter(id)
+          .pipe(
+            map((response) =>
+              CharacterDetailActions.loadCharacterSuccess({ response })
+            )
+          );
+      })
+    )
   );
 }

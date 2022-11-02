@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CharacterListPageComponent } from './containers/character-list/character-list-page.component';
-import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { CharactersGuard } from './guards/characters.guard';
+import { CharacterDetailsPageComponent } from './containers/character-details-page/character-details-page.component';
+import { CharacterExistGuard } from './guards/character-exist.guard';
 
 const routes: Routes = [
   {
@@ -13,14 +14,15 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    component: CharacterDetailsComponent,
-    canActivate: [],
+    component: CharacterDetailsPageComponent,
+    canActivate: [CharacterExistGuard],
   },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [CharactersGuard],
+  providers: [CharactersGuard, CharacterExistGuard],
 })
 export class CharactersRoutingModule {}

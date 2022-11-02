@@ -3,7 +3,7 @@ import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 
 import { getIdFromUrl } from '../../../shared/utils';
 
-import { CharacterListActions } from '../actions';
+import { CharacterDetailActions, CharacterListActions } from '../actions';
 import { Character } from '../../models';
 
 export const characterListKey = 'character-list';
@@ -51,5 +51,14 @@ export const reducer = createReducer(
     loading: false,
     loaded: false,
     error,
-  }))
+  })),
+  on(
+    CharacterDetailActions.loadCharacterSuccess,
+    (state, { response: character }) =>
+      adapter.setAll([character], {
+        ...state,
+        loading: false,
+        loaded: true,
+      })
+  )
 );

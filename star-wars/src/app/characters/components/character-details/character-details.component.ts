@@ -1,16 +1,21 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+
+import { Character } from '../../models';
 
 @Component({
   selector: 'app-character-details',
   templateUrl: './character-details.component.html',
   styleUrls: ['./character-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CharacterDetailsComponent implements OnInit {
+export class CharacterDetailsComponent {
+  @Input() char!: Character | null | undefined;
+  @Input() movies!: Record<'id' | 'name', string>[] | null | undefined;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }
