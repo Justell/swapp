@@ -9,6 +9,8 @@
       [charList]="allCharacters"
       [searchInput]="searchInput"
       (selectedChar)="onCharacterSelected($event)"
+      [loading]="loading$ | async"
+      [error]="error$ | async"
     ></app-characters-list-results>
   </div>
 </ng-container>

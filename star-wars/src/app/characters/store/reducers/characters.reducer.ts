@@ -2,7 +2,6 @@ import { createReducer, on } from '@ngrx/store';
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 
 import { getIdFromUrl } from '../../../shared/utils';
-
 import { CharacterDetailActions, CharacterListActions } from '../actions';
 import { Character } from '../../models';
 

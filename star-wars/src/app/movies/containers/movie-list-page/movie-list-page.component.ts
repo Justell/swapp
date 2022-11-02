@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { getIdFromUrl } from 'src/app/shared/utils';
 
+import { getIdFromUrl } from '../../../shared/utils';
 import { MoviesActions, MoviesSelectors } from '../../store';
 
 @Component({
@@ -12,6 +12,8 @@ import { MoviesActions, MoviesSelectors } from '../../store';
 })
 export class MovieListPageComponent {
   moviesList$ = this.store.select(MoviesSelectors.getMovies);
+  loading$ = this.store.select(MoviesSelectors.getLoading);
+  error$ = this.store.select(MoviesSelectors.getError);
 
   constructor(private store: Store, private router: Router) {}
 

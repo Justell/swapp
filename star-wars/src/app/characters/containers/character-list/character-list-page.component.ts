@@ -30,6 +30,8 @@ export class CharacterListPageComponent implements OnInit, OnDestroy {
   characterList$ = this.store
     .select(CharactersSelectors.getCharacters)
     .pipe(map((chars) => (this.allCharacters = chars)));
+  loading$ = this.store.select(CharactersSelectors.getLoading);
+  error$ = this.store.select(CharactersSelectors.getError);
 
   constructor(
     private store: Store,

@@ -22,8 +22,12 @@ export class CharactersEffects {
           map((results) =>
             CharacterListActions.loadCharactersSuccess({ results })
           ),
-          catchError((error) =>
-            of(CharacterListActions.loadCharactersFailure({ error }))
+          catchError(() =>
+            of(
+              CharacterListActions.loadCharactersFailure({
+                error: 'Something went wrong! Please try again later',
+              })
+            )
           )
         );
       })

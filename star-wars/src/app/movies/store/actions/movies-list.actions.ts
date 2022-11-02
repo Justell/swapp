@@ -1,6 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-import { ResponseList } from '../../../shared/models';
 import { Movie } from '../../models';
 
 export const MoviesActions = createActionGroup({

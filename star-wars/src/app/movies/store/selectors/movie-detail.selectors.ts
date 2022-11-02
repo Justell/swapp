@@ -1,8 +1,8 @@
 import { createSelector } from '@ngrx/store';
 
-import { getCharactersEntities } from 'src/app/characters/store/selectors/characters.selectors';
-import { RouterSelectors } from 'src/app/shared/router-store';
-import { getIdFromUrl } from 'src/app/shared/utils';
+import { getCharactersEntities } from '../../../characters/store/selectors/characters.selectors';
+import { RouterSelectors } from '../../../shared/router-store';
+import { getIdFromUrl } from '../../../shared/utils';
 import { getMovieDetailsState, getMoviesEntities } from './movies.selectors';
 
 export const getMovieLoading = createSelector(

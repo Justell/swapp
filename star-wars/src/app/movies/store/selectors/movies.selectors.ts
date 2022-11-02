@@ -31,3 +31,8 @@ export const getLoaded = createSelector(
   getMoviesListState,
   (state) => state.loaded
 );
+
+export const getError = createSelector(
+  getMoviesListState,
+  (state) => state.error
+);

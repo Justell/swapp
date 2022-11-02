@@ -6,12 +6,20 @@
       itemSize="30"
       class="feat-viewport viewport-size"
     >
-      <app-movie-list-item
-        *ngFor="let movie of moviesList"
-        [movie]="movie"
-        (click)="onMovieSelected(movie.url)"
-      >
-      </app-movie-list-item>
+      <ng-container *ngIf="moviesList && moviesList.length > 0">
+        <app-movie-list-item
+          *ngFor="let movie of moviesList"
+          [movie]="movie"
+          (click)="onMovieSelected(movie.url)"
+        >
+        </app-movie-list-item>
+      </ng-container>
+      <ng-container *ngIf="loading$ | async">
+        <div class="viewport-message">Loading...</div>
+      </ng-container>
+      <ng-container *ngIf="error$ | async as error">
+        <div class="viewport-message">{{ error }}</div>
+      </ng-container>
     </cdk-virtual-scroll-viewport>
   </div>
 </ng-container>

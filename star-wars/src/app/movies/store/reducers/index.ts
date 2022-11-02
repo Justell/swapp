@@ -1,4 +1,5 @@
 import { ActionReducerMap } from '@ngrx/store';
+
 import * as MovieDetailsReducer from './movie-details.reducer';
 import * as MoviesListReducer from './movies.reducer';
 

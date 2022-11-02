@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { ResponseList } from '../../shared/models';
 import { BASE_URL } from '../../shared/utils';
-
 import { Movie } from '../models';
 
 @Injectable({
