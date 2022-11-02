@@ -6,12 +6,13 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   .container__title {
-    padding-top: 70px;
-    font-size: 60px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    font-size: 80px;
   }
 
   .container__subtitle {
-    padding-top: 60px;
+    padding-top: 30px;
     font-size: 40px;
   }
 
@@ -33,11 +34,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #87a96b;
+  background-color: grey;
   font-size: 24px;
   cursor: pointer;
 
   &:hover {
     transform: scale(1.03);
+    background-color: #87a96b;
   }
 }
