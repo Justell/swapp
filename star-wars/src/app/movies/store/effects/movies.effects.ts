@@ -6,6 +6,7 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { MoviesService } from '../../services/movies.service';
 import { MovieDetailActions, MoviesActions } from '../actions';
 import { Router } from '@angular/router';
+import { movieFixture } from '../../fixtures/movie.fixture';
 
 @Injectable()
 export class MoviesEffects {
@@ -21,9 +22,8 @@ export class MoviesEffects {
       ofType(MoviesActions.loadMovies),
       switchMap(() => {
         return this.moviesService.getMovies().pipe(
-          tap((res) => console.log('res', res)),
-          map((response) => MoviesActions.loadMoviesSuccess({ response })),
-          catchError((error) => of(MoviesActions.loadMoviesFailure(error)))
+          map(({ results }) => MoviesActions.loadMoviesSuccess({ results })),
+          catchError((error) => of(MoviesActions.loadMoviesFailure({ error })))
         );
       })
     )

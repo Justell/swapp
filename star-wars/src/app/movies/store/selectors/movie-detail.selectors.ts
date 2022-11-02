@@ -1,5 +1,8 @@
 import { createSelector } from '@ngrx/store';
+
+import { getCharactersEntities } from 'src/app/characters/store/selectors/characters.selectors';
 import { RouterSelectors } from 'src/app/shared/router-store';
+import { getIdFromUrl } from 'src/app/shared/utils';
 import { getMovieDetailsState, getMoviesEntities } from './movies.selectors';
 
 export const getMovieLoading = createSelector(
@@ -26,4 +29,15 @@ export const getMovie = createSelector(
   getMoviesEntities,
   getParamsId,
   (entities, id) => entities[id]
+);
+
+export const getMovieCharacters = createSelector(
+  getMovie,
+  getCharactersEntities,
+  (movie, chars) =>
+    movie?.characters.map((char) => {
+      const charResourceID = getIdFromUrl(char);
+      const name = chars[charResourceID]?.name;
+      return { id: charResourceID, name: name || '' };
+    })
 );

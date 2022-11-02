@@ -37,7 +37,7 @@ export const reducer = createReducer(
     loaded: false,
     error: null,
   })),
-  on(MoviesActions.loadMoviesSuccess, (state, { response: { results } }) =>
+  on(MoviesActions.loadMoviesSuccess, (state, { results }) =>
     adapter.setAll(results, {
       ...state,
       loading: false,
