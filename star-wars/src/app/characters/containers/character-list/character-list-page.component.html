@@ -1,6 +1,6 @@
 <ng-container *ngIf="characterList$ | async">
-  <div class="container">
-    <div class="container__title">Star Wars Characters</div>
+  <div class="feat-container">
+    <div class="container-title">Star Wars Characters</div>
     <div class="search-box">
       <mat-icon>search</mat-icon>
       <input type="text" placeholder="Search..." (input)="onSearch($event)" />
@@ -9,6 +9,9 @@
       [charList]="allCharacters"
       [searchInput]="searchInput"
       (selectedChar)="onCharacterSelected($event)"
+      [loading]="loading$ | async"
+      [error]="error$ | async"
     ></app-characters-list-results>
   </div>
 </ng-container>
+<app-back-button (clicked)="goHome()">Back</app-back-button>

@@ -16,12 +16,12 @@ import { HomeComponent } from './home/home.component';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     StoreModule.forRoot(routerReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
     EffectsModule.forRoot([]),
-    BrowserAnimationsModule,
     MatToolbarModule,
   ],
   declarations: [AppComponent, LayoutComponent, HomeComponent],

@@ -2,11 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { filter } from 'rxjs';
-import {
-  MovieDetailActions,
-  MovieDetailsSelectors,
-  MoviesSelectors,
-} from '../../store';
+
+import { MovieDetailsSelectors } from '../../store';
 
 @Component({
   selector: 'app-movie-details-page',
@@ -18,6 +15,9 @@ export class MovieDetailsPageComponent {
   movieDetails$ = this.store
     .select(MovieDetailsSelectors.getMovie)
     .pipe(filter((movie) => !!movie));
+  movieCharacters$ = this.store.select(
+    MovieDetailsSelectors.getMovieCharacters
+  );
 
   constructor(private router: Router, private store: Store) {}
 

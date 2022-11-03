@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, tap } from 'rxjs';
+import { filter } from 'rxjs';
 
 import { CharacterDetailSelectors } from '../../store';
 

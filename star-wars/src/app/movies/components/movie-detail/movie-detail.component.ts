@@ -15,6 +15,7 @@ import { Movie } from '../../models';
 })
 export class MovieDetailComponent implements OnInit {
   @Input() movieDetails!: Movie | null | undefined;
+  @Input() characters!: Record<'id' | 'name', string>[] | null | undefined;
 
   constructor() {}
 

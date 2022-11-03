@@ -25,3 +25,8 @@ export const getLoaded = createSelector(
   getCharacterListState,
   (state) => state.loaded
 );
+
+export const getError = createSelector(
+  getCharacterListState,
+  (state) => state.error
+);

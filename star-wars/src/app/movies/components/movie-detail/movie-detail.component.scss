@@ -1,5 +1,29 @@
-.mat-card {
-  width: 50vw;
-  height: 300px;
-  background-color: lightgrey;
+.viewport-size {
+  height: 50vh;
+  width: 70vw;
+
+  & .content {
+    padding: 24px;
+
+    & .crawl {
+      font-style: italic;
+      padding-top: 16px;
+      color: #444444;
+    }
+
+    & a {
+      text-decoration: none;
+      color: black;
+      cursor: default;
+    }
+  }
+
+  .link {
+    cursor: pointer;
+    padding-right: 24px;
+
+    &:hover {
+      color: green;
+    }
+  }
 }

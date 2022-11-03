@@ -1,15 +1,23 @@
 <cdk-virtual-scroll-viewport
   appendOnly
   itemSize="30"
-  class="container-viewport"
+  class="feat-viewport viewport-size"
 >
-  <mat-list>
-    <mat-list-item
-      *ngFor="let char of charList | search: searchInput"
-      class="list-item"
-      (click)="onCharacterSelected(char.url)"
-    >
-      {{ char.name }}</mat-list-item
-    >
-  </mat-list>
+  <ng-container *ngIf="charList && charList.length > 0 && !loading">
+    <mat-list>
+      <mat-list-item
+        *ngFor="let char of charList | search: searchInput"
+        class="list-item"
+        (click)="onCharacterSelected(char.url)"
+      >
+        {{ char.name }}</mat-list-item
+      >
+    </mat-list></ng-container
+  >
+  <ng-container *ngIf="loading">
+    <div class="viewport-message">Loading...</div>
+  </ng-container>
+  <ng-container *ngIf="error">
+    <div class="viewport-message">{{ error }}</div>
+  </ng-container>
 </cdk-virtual-scroll-viewport>

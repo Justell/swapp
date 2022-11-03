@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { MoviesService } from '../../services/movies.service';
 import { MovieDetailActions, MoviesActions } from '../actions';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class MoviesEffects {
   constructor(
     private actions$: Actions,
     private router: Router,
-    private store: Store,
     private moviesService: MoviesService
   ) {}
 
@@ -21,9 +19,14 @@ export class MoviesEffects {
       ofType(MoviesActions.loadMovies),
       switchMap(() => {
         return this.moviesService.getMovies().pipe(
-          tap((res) => console.log('res', res)),
-          map((response) => MoviesActions.loadMoviesSuccess({ response })),
-          catchError((error) => of(MoviesActions.loadMoviesFailure(error)))
+          map(({ results }) => MoviesActions.loadMoviesSuccess({ results })),
+          catchError(() =>
+            of(
+              MoviesActions.loadMoviesFailure({
+                error: 'Something went wrong! Please try again later',
+              })
+            )
+          )
         );
       })
     )

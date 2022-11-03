@@ -1,4 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.feat-title {
+  padding-top: 10vh;
+  font-size: 40px;
+  padding-bottom: 40px;
+
+  &.big-title {
+    font-size: 80px;
+  }
+}
+
+.feat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.feat-viewport {
+  border: 1px solid white;
+  border-radius: 5px;
+  color: black;
+  background-color: #eeeeee;
+  opacity: 0.9;
+}
+
+.viewport-message {
+  font-size: 24px;
+  padding: 16px;
+  color: grey;
+}

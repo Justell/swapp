@@ -7,7 +7,11 @@ import { MovieExistGuard } from './guards/movie-exist.guard';
 import { MoviesGuard } from './guards/movies.guard';
 
 const routes: Routes = [
-  { path: '', component: MovieListPageComponent, canActivate: [MoviesGuard] },
+  {
+    path: '',
+    component: MovieListPageComponent,
+    canActivate: [MoviesGuard],
+  },
   {
     path: ':id',
     component: MovieDetailsPageComponent,

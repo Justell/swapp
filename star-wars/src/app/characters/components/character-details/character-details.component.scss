@@ -1,25 +1,6 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-
-  .container__title {
-    padding-top: 60px;
-    font-size: 40px;
-    padding-bottom: 40px;
-  }
-}
-
-.container-viewport {
-  height: 300px;
-  width: 400px;
-  border: 1px solid white;
-  border-radius: 5px;
-  color: black;
-  background-color: #eeeeee;
-  opacity: 0.9;
+.viewport-size {
+  height: 50vh;
+  width: 30vw;
 
   & .content {
     padding: 24px;

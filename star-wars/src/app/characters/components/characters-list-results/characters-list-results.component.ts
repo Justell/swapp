@@ -5,6 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+
 import { Character } from '../../models';
 
 @Component({
@@ -16,6 +17,8 @@ import { Character } from '../../models';
 export class CharactersListResultsComponent {
   @Input() charList!: Character[];
   @Input() searchInput!: string;
+  @Input() loading!: boolean | null;
+  @Input() error!: string | null;
   @Output() selectedChar = new EventEmitter<string>();
 
   onCharacterSelected(url: string) {

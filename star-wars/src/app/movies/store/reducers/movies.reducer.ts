@@ -2,7 +2,6 @@ import { createReducer, on } from '@ngrx/store';
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 
 import { getIdFromUrl } from '../../../shared/utils';
-
 import { MovieDetailActions, MoviesActions } from '../actions';
 import { Movie } from '../../models';
 
@@ -37,7 +36,7 @@ export const reducer = createReducer(
     loaded: false,
     error: null,
   })),
-  on(MoviesActions.loadMoviesSuccess, (state, { response: { results } }) =>
+  on(MoviesActions.loadMoviesSuccess, (state, { results }) =>
     adapter.setAll(results, {
       ...state,
       loading: false,

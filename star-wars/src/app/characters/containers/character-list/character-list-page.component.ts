@@ -5,6 +5,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {
   debounceTime,
@@ -29,8 +30,14 @@ export class CharacterListPageComponent implements OnInit, OnDestroy {
   characterList$ = this.store
     .select(CharactersSelectors.getCharacters)
     .pipe(map((chars) => (this.allCharacters = chars)));
+  loading$ = this.store.select(CharactersSelectors.getLoading);
+  error$ = this.store.select(CharactersSelectors.getError);
 
-  constructor(private store: Store, private changeDet: ChangeDetectorRef) {}
+  constructor(
+    private store: Store,
+    private changeDet: ChangeDetectorRef,
+    private router: Router
+  ) {}
 
   allCharacters!: Character[];
   searchInput: string = '';
@@ -64,5 +71,9 @@ export class CharacterListPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
+  }
+
+  goHome(): void {
+    this.router.navigate(['/home']);
   }
 }

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+
 import { CharactersRoutingModule } from './characters-routing.module';
 import { BackButtonModule } from '../shared/components/back-button/back-button.module';
 import { CharacterListPageComponent } from './containers/character-list/character-list-page.component';

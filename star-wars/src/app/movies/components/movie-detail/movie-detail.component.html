@@ -1,11 +1,33 @@
-<div class="card-container">
-  <ng-container *ngIf="movieDetails">
-    <mat-card>
-      <div>Title: {{ movieDetails.title }}</div>
-      <div>Episode id: {{ movieDetails.episode_id }}</div>
-    </mat-card>
-  </ng-container>
-</div>
+<ng-container *ngIf="movieDetails">
+  <div class="feat-container">
+    <div class="feat-title">
+      Episode {{ movieDetails.episode_id }}: {{ movieDetails.title }}
+    </div>
+    <cdk-virtual-scroll-viewport
+      appendOnly
+      itemSize="30"
+      class="feat-viewport viewport-size"
+    >
+      <div class="content">
+        <div class="about">
+          <div>
+            <div>Director: {{ movieDetails.director }}</div>
+            <div>Producer: {{ movieDetails.producer }}</div>
+            <div>Release date: {{ movieDetails.release_date }}</div>
+          </div>
+        </div>
+        <br />
+        <div>Characters:</div>
+        <ng-container *ngFor="let char of characters">
+          <a [routerLink]="['/characters', char.id]">
+            <span class="link">{{ char.name }}</span>
+          </a>
+        </ng-container>
+        <div class="crawl">{{ movieDetails.opening_crawl }}</div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</ng-container>
 
 <!-- with title, episode id, opening crawl, director, producer, release
 date and list of characters names with links to characters pages. -->
