@@ -9,8 +9,6 @@
       class="feat-viewport viewport-size"
     >
       <div class="content">
-        <div class="crawl">{{ movieDetails.opening_crawl }}</div>
-        <br />
         <div class="about">
           <div>
             <div>Director: {{ movieDetails.director }}</div>
@@ -25,6 +23,7 @@
             <span class="link">{{ char.name }}</span>
           </a>
         </ng-container>
+        <div class="crawl">{{ movieDetails.opening_crawl }}</div>
       </div>
     </cdk-virtual-scroll-viewport>
   </div>
