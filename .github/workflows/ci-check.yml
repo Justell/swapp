@@ -5,16 +5,21 @@ on: push
 jobs:
   semver-check:
     name: Semver Check
+    if: ${{ github.event.pull_request.merged && github.base_ref == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out
         uses: actions/checkout@v3
         with:
           fetch-depth: "0"
+
+      - name: Add nx
         run: npm add --global nx@14.0.0 @nrwl/cli@14.0.0
 
       - name: Generate Tag
         run: |
+          echo "ref.name is ${{ github.ref.name }}"
+          echo "diff: ${{ github.base_ref }}"
           SOURCE_BRANCH=${{ github.ref.name }}
           REGEX="^.+\/(feature|release|bugfix)\/.+$"
 
