@@ -39,3 +39,12 @@ jobs:
           else
             echo "Didnt match branch name"
           fi
+
+      - name: Create commit
+        run: |
+          git commit -m "some new commit"
+          git push origin master
+
+      - name: Push Tag
+        run: |
+          git push origin 'v0.1.3'
