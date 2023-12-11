@@ -5,7 +5,6 @@ on: push
 jobs:
   semver-check:
     name: Semver Check
-    if: ${{ github.event.pull_request.merged && github.base_ref == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -17,15 +16,17 @@ jobs:
         run: npm add --global nx@14.0.0 @nrwl/cli@14.0.0
 
       - name: Generate Tag
+        shell: "bash"
         run: |
-          echo "ref.name is ${{ github.ref.name }}"
-          echo "diff: ${{ github.base_ref }}"
-          SOURCE_BRANCH=${{ github.ref.name }}
-          REGEX="^.+\/(feature|release|bugfix)\/.+$"
+          echo '${{ github.event_name }} , ref.name is ${{ github.ref_name }}, diff: ${{ github.base_ref }}'
 
-          if [[ $SOURCE_BRANCH =~ $REGEX ]]; then
-            SOURCE_BRANCH_TYPE=${BASH_REMATCH[1]}
-            echo "Source branch: $SOURCE_BRANCH"
-          else
-            echo "Didn`t match branch name"
-          fi
+          SOURCE_BRANCH=${{ github.ref_name }}
+          echo 'Source branch: ${SOURCE_BRANCH}'
+          # REGEX="^.+\/(feature|release|bugfix)\/.+$"
+
+          # if [[ $SOURCE_BRANCH =~ $REGEX ]]; then
+          #   # SOURCE_BRANCH_TYPE=${BASH_REMATCH[1]}
+          #   echo "Source branch: $SOURCE_BRANCH"
+          # else
+          #   echo "Didn`t match branch name"
+          # fi
