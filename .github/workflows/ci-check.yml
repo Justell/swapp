@@ -24,7 +24,7 @@ jobs:
 
           regex='^.+\/(feature|release|bugfix)\/.+$'
           [[ $commit_subject =~ $regex ]]
-          branch_name=${BASH_REMATCH[1]}
+          branch_name=${BASH_REMATCH[1]} || 'other'
           echo "Merged branch: $branch_name"
 
       - name: Generate Tag
@@ -37,5 +37,5 @@ jobs:
             SOURCE_BRANCH_TYPE=${BASH_REMATCH[1]}
             echo "Source branch: $SOURCE_BRANCH_TYPE"
           else
-            echo "Didn`t match branch name"
+            echo "Didnt match branch name"
           fi
