@@ -18,10 +18,7 @@ jobs:
       - name: Generate Tag
         shell: "bash"
         run: |
-          echo '${{ github.event_name }} , ref.name is ${{ github.ref_name }}, diff: ${{ github.base_ref }}'
-
-          SOURCE_BRANCH='test'
-          echo "Source branch: $SOURCE_BRANCH"
+          echo '${{ github.event_name }} , ref.name is ${{ github.ref_name }}, head ref: ${{ github.head_ref }}'
           # REGEX="^.+\/(feature|release|bugfix)\/.+$"
 
           # if [[ $SOURCE_BRANCH =~ $REGEX ]]; then
