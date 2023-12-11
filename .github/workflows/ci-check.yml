@@ -17,7 +17,6 @@ jobs:
         run: npm add --global nx@14.0.0 @nrwl/cli@14.0.0
 
       - name: Some script
-        shell: "bash"
         run: |
           commit_subject=$(git log -1 --pretty=format:%s)
           echo "Commit subject: $commit_subject"
@@ -30,7 +29,6 @@ jobs:
           fi
 
       - name: Generate Tag
-        shell: "bash"
         run: |
           COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
           REGEX="^.+\/(feature|release|bugfix)\/.+$"
