@@ -5,6 +5,7 @@ on: push
 jobs:
   semver-check:
     name: Semver Check
+    if: ${{ github.ref_name == 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -15,15 +16,10 @@ jobs:
       - name: Add nx
         run: npm add --global nx@14.0.0 @nrwl/cli@14.0.0
 
-      - name: Check branch
-        run: |
-          raw=$(git rev-parse -1)
-          echo "Branch is $raw."
-
       - name: Some script
         shell: "bash"
         run: |
-          commit_subject=$(git log -1)
+          commit_subject=$(git log -1 --pretty=format:%s)
           echo "Commit subject: $commit_subject"
 
           regex='Merge pull request #[0-9]+ from .+/(.+)$'
