@@ -15,6 +15,22 @@ jobs:
       - name: Add nx
         run: npm add --global nx@14.0.0 @nrwl/cli@14.0.0
 
+      - name: Check branch
+        run: |
+          raw=$(git rev-parse -1)
+          echo "Branch is $raw."
+
+      - name: Some script
+        shell: "bash"
+        run: |
+          commit_subject=$(git log -1)
+          echo "Commit subject: $commit_subject"
+
+          regex='Merge pull request #[0-9]+ from .+/(.+)$'
+          [[ $commit_subject =~ $regex ]]
+          branch_name=${BASH_REMATCH[1]}
+          echo "Merged branch: $branch_name"
+
       - name: Generate Tag
         shell: "bash"
         run: |
