@@ -20,8 +20,8 @@ jobs:
         run: |
           echo '${{ github.event_name }} , ref.name is ${{ github.ref_name }}, diff: ${{ github.base_ref }}'
 
-          SOURCE_BRANCH=${{ github.ref_name }}
-          echo 'Source branch: ${SOURCE_BRANCH}'
+          SOURCE_BRANCH='test'
+          echo "Source branch: $SOURCE_BRANCH"
           # REGEX="^.+\/(feature|release|bugfix)\/.+$"
 
           # if [[ $SOURCE_BRANCH =~ $REGEX ]]; then
