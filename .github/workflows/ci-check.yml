@@ -24,7 +24,7 @@ jobs:
           regex='^.+\/(feature|release|bugfix)\/.+$'
 
           if [[ $commit_subject =~ $regex ]]; then
-            branch_name=${BASH_REMATCH[1]} >> $GITHUB
+            branch_name=${BASH_REMATCH[1]}
             echo "Merged branch: $branch_name"
           fi
 
@@ -39,12 +39,3 @@ jobs:
           else
             echo "Didnt match branch name"
           fi
-
-      - name: Create commit
-        run: |
-          git commit -m "some new commit"
-          git push origin master
-
-      - name: Push Tag
-        run: |
-          git push origin 'v0.1.3'
