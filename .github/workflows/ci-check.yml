@@ -5,7 +5,7 @@ on: push
 jobs:
   semver-check:
     name: Semver Check
-    if: ${{ github.event.pull_request.merged && github.base_ref == 'main' }}
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out
