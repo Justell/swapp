@@ -39,18 +39,19 @@ jobs:
             echo "Didnt match branch name"
           fi
 
-      - name: Create commit
-        run: |
-          git config --global user.email "test@user.net" && git config --global user.name "System User"
-
-          sed -i "s/release: test-fe@[A-Za-z0-9+-.]*'/release: 'test-fe@T1.2.3'/" star-wars/src/environments/environment.ts
-          git add star-wars/src/environments/environment.ts
-
-          git commit -m "Testing commit addition"
-
-          git push
-          git push origin 'v0.1.3'
-
-      # - name: Push Tag
+      # - name: Create commit
       #   run: |
+      #     git config --global user.email "test@user.net" && git config --global user.name "System User"
+
+      #     sed -i "s/release: test-fe@[A-Za-z0-9+-.]*'/release: 'test-fe@T1.2.3'/" star-wars/src/environments/environment.ts
+      #     git add star-wars/src/environments/environment.ts
+
+      #     git commit -m "Testing commit addition"
+
+      #     git push
       #     git push origin 'v0.1.3'
+
+      - name: Push Tag
+        run: |
+          git tag 'v1.2.3'
+          git push origin 'v1.2.3'
