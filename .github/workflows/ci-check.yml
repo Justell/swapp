@@ -45,7 +45,7 @@ jobs:
           git config --global user.email "test@user.net" && git config --global user.name "System User"
 
           # sed -i "s/release: test-fe@[A-Za-z0-9+-.]*'/release: 'test-fe@TAG'/" star-wars/src/environments/environment.ts
-          git add star-wars/src/environments/environment.base.ts
+          git add star-wars/src/environments/environment.ts
 
           git commit -m "Testing commit addition"
 
