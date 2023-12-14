@@ -5,7 +5,7 @@ on: push
 jobs:
   semver-check:
     name: Semver Check
-    if: ${{ github.ref_name == 'main' }}
+    if: ${{ github.ref_name == 'release/**' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -42,8 +42,13 @@ jobs:
 
       - name: Create commit
         run: |
-          git commit -m "some new commit"
-          git push origin master
+          git config --global user.email "test@user.net" && git config --global user.name "System User"
+
+          sed -i "s/release: test-fe@[A-Za-z0-9+-.]*'/release: 'test-fe@TAG'/" star-wars/src/environments/environment.ts
+          git add star-wars/src/environments/environment.ts
+
+          git push
+          git push origin "testing-branch"
 
       - name: Push Tag
         run: |
