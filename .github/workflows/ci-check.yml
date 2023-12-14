@@ -57,4 +57,5 @@ jobs:
 
       - name: Push Tag
         run: |
+          git push
           git push origin 'v1.2.4'
