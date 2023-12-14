@@ -50,8 +50,11 @@ jobs:
 
       #     git push
       #     git push origin 'v0.1.3'
+      - name: Tags
+        run: |
+          TAGS=$(git tags -l)
+          echo "$TAGS"
 
       - name: Push Tag
         run: |
-          git tag 'v1.2.3'
           git push origin 'v1.2.3'
